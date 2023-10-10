@@ -22,18 +22,19 @@ const BodyPart = ({ name }) => {
     <ScrollView
       showsVerticalScrollIndicator={false}
     >
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', marginTop: 20 , width:'100%' }}>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', marginTop: 20, width: '100%' }}>
         {
           data.map((item) => {
             return (
-              <View style={{ marginHorizontal: 15, marginVertical: 15 , width:'25%'}}>
+              <View style={{ marginHorizontal: 15, marginVertical: 15, width: '25%' }}>
                 <TouchableOpacity onPress={() => navigation.navigate("DetailScreen", {
-                  id: item.id
+                  id: item.id,
+                  part: item.bodyPart
                 })}>
                   <View style={{ alignItems: 'center' }}>
                     <Image style={{ width: 100, height: 100 }} source={{ uri: item.gifUrl }}></Image>
                     <View style={{ padding: 8 }}>
-                      <Text style = {{padding:1 , fontWeight:'bold'}}>{item.target.toUpperCase()}</Text>
+                      <Text style={{ padding: 1, fontWeight: 'bold' }}>{item.target.toUpperCase()}</Text>
                     </View>
                   </View>
                 </TouchableOpacity>

@@ -3,12 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { getIdApiCall } from '../../api';
 import LottieView from "lottie-react-native";
 import { Ionicons } from '@expo/vector-icons';
+import AnotherPart from '../components/AnotherPart';
 
 const { width, height } = Dimensions.get('window');
 
 const DetailScreen = ({ route, navigation }) => {
 
-  const { id } = route.params
+  const { id, part } = route.params
   console.log(id)
   const [data, setData] = useState(null);
 
@@ -36,19 +37,24 @@ const DetailScreen = ({ route, navigation }) => {
                 <Ionicons name="arrow-back" size={34} color="black" />
               </TouchableOpacity>
             </View>
-            <View style={[{ alignItems: 'center', marginVertical: 15, padding: 10, marginHorizontal: 5 }, styles.shadow]}>
-              <Text style={{ fontSize: 24, fontWeight: 'bold', textTransform: 'uppercase', textAlign: 'center', marginBottom: 10 }}>{data.name}</Text>
-              <Text style={{ fontSize: 24, fontWeight: 'bold', textTransform: 'uppercase', marginBottom: 10 }}>{data?.target}</Text>
-              <Text style={{ fontSize: 14, fontWeight: 'bold', textTransform: 'uppercase', textAlign: 'center', marginHorizontal: 5 }}>{data.instructions[0]}</Text>
+            <View style={[{ alignItems: 'center', marginVertical: 25, padding: 10, marginHorizontal: 5 }, styles.shadow]}>
+              <View style={{ marginBottom: 20, flexDirection: 'row', borderColor: 'red', borderRightWidth: .5, borderLeftWidth: .5, padding: 10, alignSelf: 'flex-start', alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', textTransform: 'uppercase', textAlign: 'center', marginBottom: 10 }}>{data.name.length > 20 ? data.name.slice(0, 20) + " ... " : data.name}</Text>
+                <Text style={{ fontSize: 18, fontWeight: 'bold', textTransform: 'uppercase', marginBottom: 10 }}> || {data?.target}</Text>
+              </View>
+
+              <Text style={{ padding: 6, borderTopWidth: .5, borderLeftWidth: .5, borderTopLeftRadius: 15, lineHeight: 25, fontSize: 14, fontWeight: 'bold', textTransform: 'uppercase', textAlign: 'center', marginHorizontal: 5 }}>{data.instructions[0]}</Text>
             </View>
+
+            <AnotherPart part={part}></AnotherPart>
           </>
         ) :
-          <LottieView source={require('../../assets/loading.json')} autoPlay style={{ justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+          <LottieView source={require('../../assets/loading.json')} autoPlay loop style={{ justifyContent: 'center', alignItems: 'center', height: '100%' }}>
 
           </LottieView>
       }
 
-    </View>
+    </View >
   )
 }
 
