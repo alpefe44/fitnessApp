@@ -2,12 +2,12 @@ import { View, Text, Image, StyleSheet, Pressable, KeyboardAvoidingView, TextInp
 import React, { useEffect, useState } from 'react'
 import { MaterialIcons } from '@expo/vector-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { auth, changePassword, sendEmail, update } from '../../firebase/firebase'
+import { auth, changePassword, sendEmail, update, logout } from '../../firebase/firebase'
 import TextArea from '../components/textArea'
 import CustomButton from '../components/customButton'
 import { login as LoginHandle } from '../../redux/auth';
 
-const ProfileScreen = () => {
+const ProfileScreen = ({navigation}) => {
 
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -19,6 +19,11 @@ const ProfileScreen = () => {
 
   const handleVerification = async () => {
     await sendEmail();
+  }
+
+  const handleLogOut = async () => {
+    await logout()
+    navigation.replace("LoginScreen")
   }
 
   const handleUpdateProfile = async () => {
@@ -36,7 +41,7 @@ const ProfileScreen = () => {
   }
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1 , backgroundColor:"#e2e2e2" }}>
       <View className="rounded-full self-center w-[80] h-[80] mt-4 ">
         <Image style={{ flex: 1, borderRadius: 100 }} source={{ uri: user?.photoURL == null ? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' : user.photoURL }} ></Image>
       </View>
@@ -54,9 +59,18 @@ const ProfileScreen = () => {
           <TextArea value={photoURL} secureTextEntry={false} setValue={setPhotoUrl} placeholder={"Photo Link"}></TextArea>
         </View>
       </View>
-      <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
-        <View style={{ flexDirection: 'row', alignSelf: 'center', marginHorizontal: 8 }}>
+      <View style={{ flexDirection: 'column', alignSelf: 'center' }}>
+        <View style={{ flexDirection: 'row', marginHorizontal: 8, alignItems: 'center', justifyContent: 'center' }}>
           <CustomButton press={handleUpdateProfile} style={styles.button} text={"Güncelle"}></CustomButton>
+          <View style={{ position: 'absolute', left: 30 }}>
+            <MaterialIcons name="update" size={34} color="white" />
+          </View>
+        </View>
+        <View style={{ flexDirection: 'row', marginHorizontal: 8, marginVertical: 20, alignItems: 'center', justifyContent: 'center' }}>
+          <CustomButton press={handleLogOut} style={styles.button} text={"Çıkış Yap"}></CustomButton>
+          <View style={{ position: 'absolute', left: 30 }}>
+            <MaterialIcons name="logout" size={34} color="white" />
+          </View>
         </View>
       </View>
 
@@ -66,9 +80,11 @@ const ProfileScreen = () => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: 'blue',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'gray',
     padding: 15,
-    width: 'auto',
+    width: '90%',
     borderRadius: 15,
     height: 50
   },

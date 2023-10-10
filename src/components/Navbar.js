@@ -3,14 +3,12 @@ import React from 'react'
 
 const Navbar = ({ name, url }) => {
   return (
-    <View style={[{ backgroundColor: 'gray', width: '90%', marginHorizontal: 20, marginVertical: 15, borderRadius: 15, padding: 10 }, styles.shadow]}>
+    <View style={[{ backgroundColor: '#7d7577', width: '90%', marginHorizontal: 20, marginVertical: 15, borderRadius: 15, padding: 10 }, styles.shadow]}>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 10 }}>
-        <View style={{ width: 40, height: 40 }} >
-          <Image style={{ flex: 1 }} source={require('../../assets/favicon.png')}></Image>
-        </View>
+        <Image style={{ width: 50, height: 50 }} source={require('../../assets/logo.png')}></Image>
         <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'white' }}>{name}</Text>
         <View style={{ width: 50, height: 50 }} >
-          <Image style={{ flex: 1 , borderRadius:30 }} source={{ uri: url }}></Image>
+          <Image style={{ flex: 1, borderRadius: 30 }} source={{ uri: url }}></Image>
         </View>
       </View>
     </View>

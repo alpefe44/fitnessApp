@@ -37,7 +37,7 @@ const HomeScreen = ({ navigation }) => {
     })
   }, [navigation])
   return (
-    <View className="flex-1 bg-white">
+    <View className="flex-1 bg-[#e2e2e2]">
       <View>
         <Navbar
           name={user?.displayName}
@@ -48,12 +48,12 @@ const HomeScreen = ({ navigation }) => {
       >
         <View style={{ flexDirection: 'row', paddingHorizontal: 20, justifyContent: 'center' }}>
           {
-            categories.map((item) => {
+            categories.map((item , index) => {
               return (
-                <View>
+                <View key={index}>
                   <TouchableOpacity onPress={() => setCategory(item)}>
                     {console.log(category)}
-                    <View style={{ paddingHorizontal: 10, padding: 10, backgroundColor: 'orange', marginHorizontal: 5, borderRadius: 10 }}>
+                    <View style={{ paddingHorizontal: 10, padding: 10, backgroundColor: '#ffbb9a', marginHorizontal: 5, borderRadius: 10 }}>
                       <Text style={{ textTransform: 'uppercase', fontWeight: 'bold', color: 'white' }}>{item}</Text>
                     </View>
                   </TouchableOpacity>

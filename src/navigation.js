@@ -43,7 +43,7 @@ export const BottomTab = () => {
 
           return <Ionicons name={iconName} size={size} color={color}></Ionicons>
         },
-        tabBarActiveTintColor: 'orange',
+        tabBarActiveTintColor: '#ffbb9a',
         tabBarLabelStyle: { padding: 5, fontSize: 12, fontWeight: 'bold' },
         tabBarInactiveTintColor: 'gray',
 
@@ -52,9 +52,15 @@ export const BottomTab = () => {
 
     >
       <Tab.Screen name="Home" component={HomeScreen} options={{
-        headerTitleAlign: 'center'
+        headerTitleAlign: 'center',
+        headerTintColor: "#330f1c",
+        headerStyle: { backgroundColor: "#e2e2e2" }
       }} />
-      <Tab.Screen name='Profile' component={ProfileScreen}></Tab.Screen>
+      <Tab.Screen name='Profile' component={ProfileScreen} options={{
+        headerTitleAlign: 'center',
+        headerTintColor: "#330f1c",
+        headerStyle: { backgroundColor: "#e2e2e2" }
+      }} ></Tab.Screen>
     </Tab.Navigator>
 
   );
