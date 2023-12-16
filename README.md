@@ -7,4 +7,4 @@
 ![Screenshot_1699732182](https://github.com/alpefe44/fitnessApp/assets/71967433/af41cb74-55c3-4111-8aba-e96ee49ba6f0)
 
 
-Giren üyelerin fitness hareketlerini , nasıl yapıldıklarını , ve hangi kas gruplarını çalıştırdğını gösteren bir uygulama.Firebase ile login,update ve log out işlemleri de gerçekleştirebiliyoruz.Expo ile geliştirildi.
+Giren üyelerin fitness hareketlerini , nasıl yapıldıklarını , ve hangi kas gruplarını çalıştırdğını gösteren bir uygulama.Firebase ile login,update ve log out  işlemleri de gerçekleştirebiliyoruz.Expo ile geliştirildi.
